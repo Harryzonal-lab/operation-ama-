@@ -1,13 +1,326 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  --background: #160d26;
+  --panel: #28143c;
+  --pink: #ff4f91;
+  --light-pink: #ffb6d1;
+  --gold: #ffd166;
+  --white: #fff8fc;
+  --muted: #d6c5df;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--white);
+  font-family: "DM Sans", sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0 20px;
+  background:
+    radial-gradient(ellipse at top, #48204f 0%, transparent 55%),
+    var(--background);
+}
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  color: #ff80b5;
+  font-size: 24px;
+  letter-spacing: 24px;
+  opacity: 0.25;
+  animation: float 12s linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(-120vh);
+  }
+}
+
+.topbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px 0;
+}
+
+.logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.top-note {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.billboard {
+  position: relative;
+  z-index: 1;
+  max-width: 950px;
+  margin: 40px auto 60px;
+  padding: 65px 25px;
+  border: 1px solid #ffb6d13b;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #321b49, #1d102e);
+  box-shadow:
+    0 30px 100px #0005,
+    0 0 60px #ff4f9112;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px solid #ffd16650;
+  border-radius: 30px;
+  background: #ffd16612;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.intro {
+  margin-top: 35px;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 10px 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(52px, 11vw, 120px);
+  line-height: 1;
+  letter-spacing: -6px;
+}
+
+h1 span {
+  color: var(--light-pink);
+  text-shadow: 0 0 25px #ff4f9180;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  to {
+    text-shadow: 0 0 45px #ff4f91;
+  }
+}
+
+.subtitle {
+  margin: 30px 0;
+  color: var(--muted);
+  font-size: clamp(17px, 3vw, 23px);
+  line-height: 1.8;
+}
+
+.subtitle strong {
+  color: var(--white);
+}
+
+.joke {
+  margin: 30px auto;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.joke strong {
+  color: var(--gold);
+}
+
+.main-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #ff76ac, #ff4288);
+  box-shadow: 0 10px 30px #ff428840;
+  color: #260d1d;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.main-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px #ff4f9155;
+}
+
+.main-button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.message,
+.confession {
+  max-width: 650px;
+  margin: 45px auto 0;
+  padding: 30px;
+  border: 1px solid #ffb6d133;
+  border-radius: 22px;
+  background: #160d2680;
+}
+
+.label {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(25px, 5vw, 38px);
+}
+
+.message > p:not(.label),
+.confession > p:not(.label) {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.confession {
+  border-color: #ffd16650;
+}
+
+.confession h2 {
+  color: var(--light-pink);
+}
+
+.heart {
+  font-size: 50px;
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.sweet-note {
+  padding: 15px;
+  border-radius: 12px;
+  background: #ffd16612;
+}
+
+.signature {
+  color: var(--light-pink) !important;
+  font-weight: 700;
+}
+
+.reveal {
+  animation: appear 0.6s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 30px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+footer span {
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 0 12px;
+  }
+
+  .topbar {
+    padding: 18px 0;
+  }
+
+  .logo {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .top-note {
+    font-size: 11px;
+  }
+
+  .billboard {
+    margin: 22px auto 40px;
+    padding: 42px 16px;
+    border-radius: 22px;
+  }
+
+  .badge {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  h1 {
+    font-size: clamp(48px, 13vw, 75px);
+    letter-spacing: -3px;
+  }
+
+  .message,
+  .confession {
+    padding: 22px 16px;
+  }
+
+  .main-button {
+    max-width: 100%;
+    padding: 15px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
 }
